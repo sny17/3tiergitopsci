@@ -27,12 +27,12 @@ jobs:
 
       - name: Frontend Compilation (Syntax Check)
         run: |
-          cd client
+          cd /CI/client
           find . -name "*.js" -exec node --check {} +
 
       - name: Backend Compilation (Syntax Check)
         run: |
-          cd api
+          cd /CI/api
           find . -name "*.js" -exec node --check {} +
 
   gitleaks-scan:
@@ -89,8 +89,8 @@ jobs:
       - name: Build and Push Docker image (backend)
         uses: docker/build-push-action@v6
         with:
-          context: ./api
-          file: ./api/Dockerfile
+          context: ./CI/api
+          file: ./CI/api/Dockerfile
           push: true
           tags: |
             sny17/backend:latest
@@ -118,8 +118,8 @@ jobs:
       - name: Build and Push Docker image (frontend)
         uses: docker/build-push-action@v6
         with:
-          context: ./client
-          file: ./client/Dockerfile
+          context: ./CI/client
+          file: ./CI/client/Dockerfile
           push: true
           tags: |
             sny17/frontend:latest
