@@ -27,12 +27,12 @@ jobs:
 
       - name: Frontend Compilation (Syntax Check)
         run: |
-          cd /CI/client
+          cd CI/client
           find . -name "*.js" -exec node --check {} +
 
       - name: Backend Compilation (Syntax Check)
         run: |
-          cd /CI/api
+          cd CI/api
           find . -name "*.js" -exec node --check {} +
 
   gitleaks-scan:
